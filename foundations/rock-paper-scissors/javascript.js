@@ -1,4 +1,31 @@
-function getComputerChoice() {
+// New code
+rock.addEventListener('click',  () => { playRound("Rock") })
+paper.addEventListener('click',  () => { playRound("Paper") })
+scissors.addEventListener('click',  () => { playRound("Scissors") })
+
+let playerScore = 0;
+let cpuScore = 0;
+
+
+// DOM Manipulation (init)
+const playerScoreDisplay = document.createElement("div");
+playerScoreDisplay.classList.add("playerScore");
+playerScoreDisplay.textContent = "Player Score: " + playerScore;
+results.appendChild(playerScoreDisplay);
+
+const cpuScoreDisplay = document.createElement("div");
+cpuScoreDisplay.classList.add("cpuScore");
+cpuScoreDisplay.textContent = "CPU Score: " + cpuScore;
+results.appendChild(cpuScoreDisplay);
+
+const resultDisplay = document.createElement("div");
+resultDisplay.classList.add("resultDisplay");
+
+
+
+
+// Old code refactored
+function getComputerSelection() {
     let choiceArray = [
         'Rock',
         'Paper',
@@ -12,110 +39,115 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    let playerSelection = prompt("Please pick Rock, Paper, or Scissors", "Rock/Paper/Scissors");
-    let firstLetter = playerSelection.charAt(0);
+function checkResult(playerSelection, cpuSelection) {
 
-    let remainingLetters = playerSelection.substring(1);
-
-    let firstLetterCap = firstLetter.toUpperCase();
-    let remainingLettersLower = remainingLetters.toLowerCase();
-
-    let formattedChoice = firstLetterCap + remainingLettersLower;
-
-    let validChoices = [
-        'Rock',
-        'Paper',
-        'Scissors'
-    ]
-
-    let validResponse = (formattedChoice === validChoices[0] ||
-                        formattedChoice === validChoices[1] ||
-                        formattedChoice === validChoices[2]);
-
-
-    if (!validResponse) {
-        return "Invalid response, please enter a valid selection";
-    }  
-    else {
-        return formattedChoice;
-    }
-
-
-}
-
-function playRPS(playerSelection, computerSelection, playerScore, cpuScore) {
-
-    if (playerSelection === computerSelection) {
-        return "Tie! Play again?"
+    if (playerSelection === cpuSelection) {
+        return "Tie"
     }
 
     else {
         if (playerSelection === "Rock") {
-            if (computerSelection === "Paper") {
-                return "You lose. Play again?";
+            if (cpuSelection === "Paper") {
+                return "Loss"
             }
             else {
-                return "You win! Play again?";
+                return "Win"
             }
         }
 
         if (playerSelection === "Paper") {
-            if (computerSelection === "Scissors") {
-                return "You lose. Play again?";
+            if (cpuSelection === "Scissors") {
+                return "Loss"
             }
             else {
-                return "You win! Play again?";
+                return "Win"
             }
         }
         if (playerSelection === "Scissors") {
-            if (computerSelection === "Rock") {
-                return "You lose. Play again?";
+            if (cpuSelection === "Rock") {
+                return "Loss"
             }
             else {
-                return "You win! Play again?";
-            }
+                return "Win"
+                
+            } 
         }
     }
+} 
+
+function playRound(playerSelection) {
+
+    let cpuSelection = getComputerSelection();
+    console.log(playerSelection);
+    console.log(cpuSelection);
+
+    let result = checkResult(playerSelection, cpuSelection);
+    console.log(result);
+    updateScore(result);
 }
 
-function game() {
-    let playerScore = 0;
-    let cpuScore = 0;
-
-    for (let i = 0; playerScore < 5 && cpuScore < 5; i++) {
-        computerSelection = getComputerChoice();
-        console.log(computerSelection);
-
-        playerSelection = getPlayerChoice();
-
-
-        result = playRPS(playerSelection, computerSelection);
-
-        if (result === "You win! Play again?") {
-            playerScore += 1;
-            console.log(playerScore, cpuScore);
-        }
-
-        if (result === "You lose. Play again?") {
-            cpuScore += 1;
-            console.log(playerScore, cpuScore);
-        }
-
-        if (result === "Tie! Play again?") {
-            console.log(playerScore, cpuScore);
-        }
+function updateScore(result) {
+    if (result === "Tie") {
+        
+    }
+    else if (result === "Win") {
+        playerScore += 1;
+    }
+    else if (result === "Loss") {
+        cpuScore +=1;
     }
 
-    if (playerScore === 5) {
-        return "You won! Play again?";
-    }
-    if (cpuScore === 5) {
-        return "You lost. Play again?";
-    }
-    else {
-        return "Error";
-    }
+    playerScoreDisplay.textContent = "Player Score: " + playerScore;
+    results.appendChild(playerScoreDisplay);
+
+    cpuScoreDisplay.textContent = "CPU Score: " + cpuScore;
+    results.appendChild(cpuScoreDisplay);
 
 
+    resultDisplay.textContent = result;
+    results.appendChild(resultDisplay);
 }
+
+
+
+
+// function game() {
+//     let playerScore = 0;
+//     let cpuScore = 0;
+
+//     for (let i = 0; playerScore < 5 && cpuScore < 5; i++) {
+//         computerSelection = getComputerChoice();
+//         console.log(computerSelection);
+
+//         playerSelection = getPlayerChoice();
+
+
+//         result = playRPS(playerSelection, computerSelection);
+
+//         if (result === "You win! Play again?") {
+//             playerScore += 1;
+//             console.log(playerScore, cpuScore);
+//         }
+
+//         if (result === "You lose. Play again?") {
+//             cpuScore += 1;
+//             console.log(playerScore, cpuScore);
+//         }
+
+//         if (result === "Tie! Play again?") {
+//             console.log(playerScore, cpuScore);
+//         }
+//     }
+
+//     if (playerScore === 5) {
+//         return "You won! Play again?";
+//     }
+//     if (cpuScore === 5) {
+//         return "You lost. Play again?";
+//     }
+//     else {
+//         return "Error";
+//     }
+
+
+// }
