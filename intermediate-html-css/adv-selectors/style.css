@@ -1,0 +1,23 @@
+main div {
+    /* selects child and grand-child divs inside of main */
+}
+
+main > div {
+    /* only selects divs with a class of child, aka direct children of main */
+}
+
+main > div > div {
+    /* only selects divs with class of grand-child, aka direct children of child */
+}
+
+.group1 + div {
+    /* only selects the div with the class child group2 */
+}
+
+.group1 + div + div {
+    /* only selects the div with class child group3 (adjacent to grp1 is grp2, adjacent to grp2 is grp3) */
+}
+
+.group1 ~ div {
+    /* this will select all of group1's siblings using the general sibling combinator, in this case the 2nd and 3rd .child divs */
+}
