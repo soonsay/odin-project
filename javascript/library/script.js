@@ -119,24 +119,3 @@ function enterEdit() {
 
 
 let book1 = new Book('The Dark Tower', 'Stephen King', 1243, false);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-
