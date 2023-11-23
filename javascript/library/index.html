@@ -3,17 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2bfd4370a3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon/icons8-books-cute-color-16.png">
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <title>My Library</title>
 </head>
 <body>
-    <div class="container"></div>
-    <button class="add">Add Book</button>
-    <dialog id="dialog">
-        <form method="form">
-            <input type="checkbox" value="Read?">
-        </form>
-    </dialog>
+    <div class="container">
+        <div class="sidebar">
+        <h1 class="pageHeader">
+            <div class="headerText"><i class="fa-solid fa-book-bookmark"></i> My Library</div>
+        </h1>
+        <div class="controls">
+            <button class="sidebarControl"><i class="fa-solid fa-download"></i>Import Library</button>
+            <button class="sidebarControl"><i class="fa-solid fa-upload"></i>Export Library</button>
+        </div>
+        <div class="footer">Created by soonsay @ github.com/soonsay/</div>
+        </div>
+        <div class="topRight">
+            <div class="searchHeader">What book would you like to find?</div>
+            <input type="text" class="searchbar" placeholder="Search for a book.. (by Title or Author)">
+            <div class="topRightControls">
+                <i class="add fa-solid fa-circle-plus"></i>
+                <i class="edit fa-solid fa-pen-to-square"></i>
+            </div>
+        </div>
+            <dialog id="dialog">
+                <form class="form" method="form" name="bookForm">
+                    <label for="title">Title: </label>
+                    <input required type="text" id="title" name="title" value="" placeholder="">
+                    <label for="author">Author: </label>
+                    <input required type="text" id="author" name="author" value="" placeholder="">
+                    <label for="pages">Number of Pages: </label>
+                    <input required type="number" id="pages" name="pages" value="" placeholder="">
+                    <label for="title" class="readLabel">Have you read this book?<input type="checkbox" id="read" name="read" value="True"></label>
+                    <input type="submit" id="submit" name="submit" value="Add Book">
+                </form>
+            </dialog>
+        <div class="libraryContainer"></div>
+    </div>
 </body>
 </html>

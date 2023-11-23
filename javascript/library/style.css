@@ -1,0 +1,285 @@
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-regular-webfont.woff2") format("woff2"),
+        url("fonts/solway-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-light-webfont.woff2") format("woff2"),
+        url("fonts/solway-light-webfont.woff") format("woff");
+    font-weight: light;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-bold-webfont.woff2") format("woff2"),
+        url("fonts/solway-bold-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+* {
+        margin: 0;
+        padding: 0;
+        scrollbar-width: thin;
+        font-family: 'Solway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: normal;
+}
+
+:root {
+    --pri-purple: #9597ED;
+    --sec-purple: #696DE6;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr;
+    height: 100%;
+}
+
+.sidebar {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-row: 1 / 6;
+    grid-column: 1 / 2;
+
+    background-color: #9597ED;
+}
+
+.pageHeader {
+    display: grid;
+    grid-row: 1 / 2;
+    justify-content: center;
+    align-items: center;
+
+}
+.headerText {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid black;
+}
+
+.controls {
+    display: grid;
+    grid-row: 2 / 3;
+    height: 50%;
+}
+
+.sidebarControl {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: center;   
+    text-align: left; 
+
+    border: none;
+    background-color: var(--pri-purple);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sidebarControl:hover {
+    background-color: var(--sec-purple);
+    color: white;
+    cursor: pointer;
+}
+
+.sidebarControl i {
+    text-align: center;
+}
+
+
+.footer {
+    display: flex;
+    grid-row: 5 / 6;
+    justify-content: center;
+    align-self: end;
+    background-color: var(--sec-purple);
+    line-height: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.topRight {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-column: 2 / 3;
+    align-items: center;
+
+}
+
+.topRightControls {
+    display: flex;
+    gap: 2rem;
+    grid-row: 2 / 3;
+}
+
+.topRight i {
+    font-size: 3rem;
+    width: fit-content;
+    height: fit-content;
+    color: var(--pri-purple);
+}
+
+.topRight i:hover {
+    cursor: pointer;
+    color: var(--sec-purple);
+
+}
+
+.searchbar {
+    height: 40%;
+    width: 90%;
+    border-radius: 6rem;
+    background-color: lightgray;
+    border: none;
+    padding: 0 0 0 1rem;
+    align-self: center;
+    margin: 1rem;
+
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.searchHeader {
+    align-self: end;
+    margin: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.add {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+.libraryContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-auto-rows: 1fr;
+    grid-row: 2 / 6;
+    overflow-y: auto;
+
+    border-radius: 2rem;
+    box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
+    gap: 1rem;
+    margin: 1rem;
+
+    border: 1px solid black;
+}
+
+.topRight, .libraryContainer {
+    margin-left: 4rem;
+}
+
+#dialog {
+    position: fixed;
+
+
+    top: 50%;
+    left: 50%;
+    width: 15vw;
+    margin-left: -7.5vw;
+    height: 31vh;
+    margin-top: -15vh;
+
+    padding: 1rem;
+
+    border: 0.25rem solid var(--pri-purple);
+    box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
+    border-radius: 1rem;
+    
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+.form {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    gap: 1rem;
+    height: 100%;
+}
+
+.readLabel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+input[type=checkbox]:checked {
+    background-color: orange;
+}
+
+input[type=submit] {
+    font-size: 1rem;
+    grid-row: 9 / 11;
+    width: 50%;
+    height: 80%;
+    border-radius: 2rem;
+    border: 0;
+    font-weight: bold;
+    background-color: var(--pri-purple);
+}
+
+input[type=submit]:hover {
+    background-color: var(--sec-purple);
+    cursor: pointer;
+}
+
+
+
+.bookCard {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+    max-height: 20rem;
+    min-height: 15rem;
+    margin: 1rem;
+    padding: 2rem;
+    
+    border: 1px black solid;
+    border-left: 0.25rem solid var(--sec-purple);
+
+    border-radius: 2rem;
+    box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
+
+}
+
+.deleteButton {
+    grid-row: 1;
+    justify-self: end;
+    font-size: 1.5rem;
+    color: gray;
+    width: fit-content;
+    height: fit-content;
+}
+
+.deleteButton:hover {
+    color: red;
+    opacity: 60%;
+    cursor: pointer;
+}
+
+.deleteHidden {
+    visibility: hidden;
+}
