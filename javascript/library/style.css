@@ -277,6 +277,11 @@ input[type=submit]:hover {
 
 .readToggle:hover {
     cursor: pointer;
+    opacity: 50%;
+    border: 1px black dashed;
+    font-size: 3rem;
+    border-radius: 0.5rem;
+    padding: 0.35rem;
 }
 
 .deleteButton {
