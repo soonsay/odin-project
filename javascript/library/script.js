@@ -10,6 +10,7 @@ editButton.addEventListener('click', () => {enterEdit()})
 
 
 
+
 bookForm.addEventListener("submit", function(event){
     console.log(event)
 
@@ -61,7 +62,6 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
     myLibrary.push(book);
     createBookCard(book);
-    // console.log(myLibrary);
 }
 
 function createBookCard(book) {
@@ -70,8 +70,30 @@ function createBookCard(book) {
         for (const attr in book) {
             let property = document.createElement('div');
             let formattedAttribute = attr.charAt(0).toUpperCase() + attr.slice(1);
-            property.innerText = formattedAttribute + ': ' + book[attr];
-            newBook.appendChild(property);
+
+            if (attr == 'read') {
+                let readToggle = document.createElement('button');
+                readToggle.classList.add('readToggle');
+                readToggle.addEventListener('click', () => {changeReadStatus(book, readToggle)})
+                readToggle.innerText = book[attr];
+                if (book[attr] == true) {
+                    readToggle.classList.add('read');
+                    readToggle.innerHTML = '<i class="fa-solid fa-check" style="color: #00ae00;"></i>'
+                }
+                else {
+                    readToggle.classList.add('notRead');
+                    readToggle.innerHTML = '<i class="fa-solid fa-x" style="color: #ff1515;"></i>'
+                }
+
+
+                property.innerText = formattedAttribute + ': '
+                property.appendChild(readToggle);
+                newBook.appendChild(property);
+            }
+            else {
+                property.innerText = formattedAttribute + ': ' + book[attr];
+                newBook.appendChild(property);
+            }
         }
         let deleteProp = document.createElement('i');
         deleteProp.addEventListener('click', () => deleteBook(deleteProp))
@@ -84,6 +106,7 @@ function createBookCard(book) {
     libraryContainer.appendChild(newBook);
 
 }
+
 
 function displayLibrary(library) {
     for (const book in library) {
@@ -107,15 +130,28 @@ function deleteBook(book) {
     console.log(book);
     book.parentElement.classList.add('delete');
     document.querySelector('.delete').remove();
- }
+}
 
 function enterEdit() {
-    console.log('edit');
     let elem = document.querySelectorAll('.bookCard>i')
     for (const element of elem) {
         element.classList.toggle('deleteHidden');
     } 
 }
 
+function changeReadStatus(book, elem) {
 
-let book1 = new Book('The Dark Tower', 'Stephen King', 1243, false);
+    if (book.read == true) {
+        elem.innerHTML = '<i class="fa-solid fa-x" style="color: #ff1515;"></i>'
+        book.read = false;
+    }
+    else {
+        elem.innerHTML = '<i class="fa-solid fa-check" style="color: #00ae00;"></i>'
+        book.read = true;
+    }
+    console.log(book.read);
+}
+
+let book1 = new Book('Wizard and Glass', 'Stephen King', 928, true);
+
+addBookToLibrary(book1);

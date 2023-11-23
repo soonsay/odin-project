@@ -247,11 +247,10 @@ input[type=submit]:hover {
 }
 
 
-
 .bookCard {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     max-height: 20rem;
     min-height: 15rem;
     margin: 1rem;
@@ -262,7 +261,22 @@ input[type=submit]:hover {
 
     border-radius: 2rem;
     box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
+}
 
+.bookCard div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.readToggle {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+
+.readToggle:hover {
+    cursor: pointer;
 }
 
 .deleteButton {
