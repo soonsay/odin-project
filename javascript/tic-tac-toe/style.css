@@ -1,0 +1,141 @@
+:root {
+  --primary-background: #000000;
+  --board-background: #121212;
+  --tile-background: #131313;
+  --primary-purple: #BB86FC;
+  --primary-green: #03DAC6;
+  --font-white: #FFFFFF;
+
+}
+
+body {
+  background: var(--primary-background);
+}
+
+.title-header {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+.scoreboard {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 0.8fr 0.5fr 0.5fr 3fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+
+  height: 98vh;
+  width: 98vw;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+
+    height: 500px;
+    width: 500px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid black;
+    gap: 1rem;
+    padding: 1rem;
+    background-color:  var(--board-background);
+
+
+    border-radius: 1rem;
+    /* box-shadow: -0.9em 0.15em gray; */
+  }
+
+  .turn {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    align-self: center;
+    font-size: 2rem;
+
+  }
+
+  .turn.X {
+    justify-self: left;
+  }
+
+  .turn.O {
+    justify-self: right;
+  }
+
+  .X {
+    border: 0.2rem solid var(--primary-purple);
+    color: var(--primary-purple);
+  }
+
+  .O {
+    border: 0.2rem solid var(--primary-green);
+    color: var(--primary-green);
+  }
+
+  .turn {
+    padding: 2rem;
+    border-radius: 3rem;
+    background: var(--board-background);
+  }
+
+
+  
+  .tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 4rem;
+    background: var(--tile-background);
+    cursor: pointer;
+
+    border: 0.2rem solid grey;
+    border-radius: 1rem;
+  }
+
+  .dialog {
+    display: flex;
+    color: var(--font-white);
+    width: 20vw;
+    padding: 2rem;
+    border-radius: 3rem;
+    background: var(--board-background);
+
+    font-size: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .newGame {
+    background: var(--tile-background);
+    color: var(--font-white);
+    border: 0.2rem solid var(--font-white);
+    border-radius: 3rem;
+    font-size: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+
+  }
+
+  .newGame:hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
+
+  .tile:hover {
+    opacity: 50%;
+  }
+
+  .hidden {
+    display: none;
+    visibility: none;
+  }
